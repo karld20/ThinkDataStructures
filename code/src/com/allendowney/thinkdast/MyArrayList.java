@@ -45,7 +45,14 @@ public class MyArrayList<T> implements List<T> {
 	@Override
 	public boolean add(T element) {
 		// TODO: FILL THIS IN!
-		return false;
+		if(size >= array.length) {
+			T[] resized = (T[]) new Object[array.length * 2];
+			System.arraycopy(array, 0, resized, 0, array.length);
+			array = resized;
+		}
+		array[size] = element;
+		size++;
+		return true;
 	}
 
 	@Override
